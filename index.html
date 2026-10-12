@@ -1,445 +1,734 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Discover useful products for pets, beauty, travel, home and everyday living at ZinoMart.">
-<title>ZinoMart | Discover Your Next Favourite</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Explore practical buying guides, product comparisons and useful finds for home, beauty, pets, travel and everyday living at ZinoMart.">
+<meta name="theme-color" content="#153c30">
+<title>ZinoMart | Smart Finds & Buying Guides</title>
 
 <style>
 :root {
-  --ink: #17211e;
-  --green: #176b50;
-  --lime: #d6f36a;
-  --cream: #f7f7f0;
-  --white: #ffffff;
-  --muted: #68716c;
+  --green:#174e3b;
+  --dark:#112c23;
+  --lime:#d9f477;
+  --cream:#f7f7f0;
+  --white:#fff;
+  --muted:#68766e;
+  --border:#e4e8df;
 }
-* { box-sizing: border-box; }
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background: var(--cream);
-  color: var(--ink);
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:85px}
+body{margin:0;background:var(--cream);color:var(--dark);
+font-family:Arial,Helvetica,sans-serif;line-height:1.65}
+a{color:inherit;text-decoration:none}
+button,input,textarea{font:inherit}
+button{cursor:pointer}
+header{position:sticky;top:0;z-index:10;background:#ffffffef;
+backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav{max-width:1250px;margin:auto;padding:15px 5%;
+display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{font-weight:900;font-size:25px;letter-spacing:-1px;white-space:nowrap}
+.logo span{color:#34815b}
+nav{display:flex;align-items:center;gap:17px;flex-wrap:wrap}
+nav a{font-size:13px;font-weight:700}
+nav a:hover,.text-link:hover{color:#34815b}
+.menu-btn{display:none;border:1px solid var(--border);background:white;
+padding:8px 12px;border-radius:9px}
+.hero{background:var(--dark);color:white;padding:65px 7%;
+border-radius:25px;display:flex;align-items:center;justify-content:space-between;gap:30px}
+.wrap{max-width:1250px;width:90%;margin:28px auto}
+.hero-copy{max-width:700px}
+.eyebrow{font-size:12px;font-weight:900;letter-spacing:2px;
+text-transform:uppercase;color:var(--lime)}
+h1{font-size:clamp(38px,6.5vw,72px);line-height:1.04;
+letter-spacing:-2.5px;margin:15px 0}
+h2{font-size:clamp(26px,4vw,36px);line-height:1.2;letter-spacing:-1px}
+.hero p{color:#d1dfd6;max-width:560px}
+.hero-art{font-size:clamp(85px,14vw,155px);min-width:130px;text-align:center}
+.btn{display:inline-block;border:0;border-radius:30px;padding:13px 20px;
+font-weight:800;background:var(--lime);color:var(--dark);margin:8px 5px 0 0}
+.btn.green{background:var(--green);color:white}
+.btn.light{background:white;color:var(--dark);border:1px solid var(--border)}
+.section{margin:52px auto}
+.heading{display:flex;justify-content:space-between;align-items:end;
+gap:15px;flex-wrap:wrap;margin-bottom:20px}
+.heading h2{margin:0 0 7px}
+.muted{color:var(--muted)}
+.small{font-size:13px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:19px}
+.products{grid-template-columns:repeat(3,minmax(0,1fr))}
+.card{background:white;border:1px solid var(--border);border-radius:17px;
+overflow:hidden;display:flex;flex-direction:column;min-width:0}
+.card-body{padding:19px;display:flex;flex-direction:column;flex:1}
+.card h3{margin:8px 0;font-size:19px;line-height:1.35}
+.card p{font-size:14px;color:var(--muted);margin:0 0 17px}
+.card-body .btn{margin-top:auto;text-align:center;border-radius:9px}
+.art{height:155px;background:#eaf0e5;display:flex;align-items:center;
+justify-content:center;font-size:65px;position:relative}
+.art img{height:100%;width:100%;object-fit:contain;background:white;padding:10px}
+.art-label{position:absolute;top:10px;left:10px;background:var(--lime);
+padding:4px 9px;border-radius:20px;font-size:10px;font-weight:900;z-index:1}
+.category{color:#34815b;font-size:11px;font-weight:900;
+letter-spacing:1px;text-transform:uppercase}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0}
+.filter{border:1px solid var(--border);background:white;border-radius:25px;
+padding:9px 14px;font-weight:700;font-size:13px}
+.filter.active{background:var(--green);color:white}
+.article-icon{height:105px;display:flex;align-items:center;justify-content:center;
+background:#eaf0e5;font-size:45px}
+.read-link{font-size:13px;font-weight:900;color:#26704d;margin-top:auto}
+.article-content{padding:17px;display:flex;flex-direction:column;flex:1}
+.article-content h3{font-size:18px;line-height:1.4;margin:8px 0}
+.article-content p{font-size:13px;color:var(--muted)}
+.page{display:none;min-height:55vh}
+.page.active{display:block}
+.prose{max-width:850px;margin:auto;background:white;border:1px solid var(--border);
+border-radius:18px;padding:clamp(20px,5vw,45px)}
+.prose h1{font-size:clamp(32px,5vw,48px);letter-spacing:-1px}
+.prose h2{font-size:23px;margin-top:30px}
+.prose h3{font-size:18px;margin-top:24px}
+.prose p,.prose li{font-size:15px;color:#45534b}
+.prose a,.text-link{text-decoration:underline;text-underline-offset:3px}
+.notice{background:#eef3e9;border-radius:12px;padding:17px;margin:20px 0;
+font-size:13px;color:#435248}
+.field{display:block;margin:15px 0;font-weight:700;font-size:14px}
+.field input,.field textarea{display:block;width:100%;padding:12px;
+margin-top:7px;border:1px solid #cbd4ca;border-radius:9px;background:white}
+.field textarea{min-height:130px;resize:vertical}
+footer{background:var(--dark);color:white;margin-top:65px;padding:40px 5%}
+.footer-grid{max-width:1250px;margin:auto;display:grid;
+grid-template-columns:2fr 1fr 1fr;gap:30px}
+footer p,footer a{font-size:13px;color:#cbd8ce}
+footer a:hover{color:var(--lime)}
+.footer-links{display:flex;flex-direction:column;gap:8px}
+footer h3{font-size:14px}
+footer .logo span{color:var(--lime)}
+.copyright{max-width:1250px;margin:25px auto 0;border-top:1px solid #ffffff25;
+padding-top:20px;font-size:12px;color:#b8c9bd}
+.empty{padding:30px;background:white;border-radius:12px}
+@media(max-width:800px){
+ .nav{flex-wrap:wrap}
+ .menu-btn{display:block}
+ nav{display:none;width:100%;padding:8px 0}
+ nav.open{display:flex}
+ .hero{padding:38px 7%}
+ .hero-art{min-width:70px;font-size:75px}
+ .grid,.products{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .footer-grid{grid-template-columns:1fr 1fr}
+ .footer-grid>div:first-child{grid-column:1/-1}
 }
-a { color: inherit; text-decoration: none; }
-header {
-  background: var(--white);
-  padding: 18px 6%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 15px;
-  border-bottom: 1px solid #e8e9e2;
-}
-.logo { font-size: 25px; font-weight: 900; letter-spacing: -1px; }
-.logo span { color: var(--green); }
-nav { display: flex; gap: 20px; flex-wrap: wrap; }
-nav a { font-size: 14px; font-weight: 700; }
-.hero {
-  margin: 24px auto;
-  width: 90%;
-  max-width: 1250px;
-  background: var(--ink);
-  color: white;
-  border-radius: 24px;
-  padding: 55px 7%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 25px;
-  overflow: hidden;
-}
-.hero-content { max-width: 650px; }
-.eyebrow {
-  color: var(--lime);
-  font-weight: 800;
-  text-transform: uppercase;
-  font-size: 12px;
-  letter-spacing: 2px;
-}
-h1 {
-  font-size: clamp(36px, 6vw, 68px);
-  line-height: 1.04;
-  margin: 18px 0;
-  letter-spacing: -2px;
-}
-.hero p { color: #d3ddd7; line-height: 1.7; max-width: 480px; }
-.hero-art {
-  font-size: clamp(75px, 13vw, 150px);
-  min-width: 120px;
-  text-align: center;
-}
-.hero-btn {
-  display: inline-block;
-  background: var(--lime);
-  color: var(--ink);
-  padding: 14px 22px;
-  border-radius: 30px;
-  font-weight: 800;
-  margin-top: 12px;
-}
-.section {
-  width: 90%;
-  max-width: 1250px;
-  margin: 45px auto;
-}
-.section-heading {
-  display: flex;
-  justify-content: space-between;
-  align-items: end;
-  gap: 15px;
-  margin-bottom: 20px;
-}
-.section-heading h2 { font-size: 30px; margin: 0 0 8px; }
-.section-heading p { color: var(--muted); margin: 0; }
-.filters { display: flex; flex-wrap: wrap; gap: 9px; margin: 20px 0; }
-.filter {
-  border: 1px solid #dce0d8;
-  background: white;
-  border-radius: 30px;
-  padding: 10px 15px;
-  cursor: pointer;
-  font-weight: 700;
-}
-.filter.active, .filter:hover {
-  background: var(--green);
-  color: white;
-  border-color: var(--green);
-}
-.grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 18px;
-}
-.card {
-  background: white;
-  border: 1px solid #e8e9e2;
-  border-radius: 18px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  transition: transform .2s, box-shadow .2s;
-}
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 30px #17211e12;
-}
-.product-visual {
-  height: 190px;
-  background: #edf1e6;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 70px;
-  position: relative;
-}
-.product-visual img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  padding: 14px;
-  background: white;
-}
-.tag {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  background: var(--lime);
-  color: var(--ink);
-  font-size: 10px;
-  font-weight: 900;
-  padding: 7px 9px;
-  border-radius: 20px;
-  z-index: 1;
-}
-.card-content {
-  padding: 17px;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-.category {
-  color: var(--green);
-  text-transform: uppercase;
-  font-size: 10px;
-  font-weight: 900;
-  letter-spacing: 1px;
-}
-.card h3 { font-size: 17px; line-height: 1.4; margin: 9px 0; }
-.card p {
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.6;
-  margin: 0 0 18px;
-  flex: 1;
-}
-.shop-btn {
-  display: block;
-  text-align: center;
-  padding: 12px;
-  border-radius: 9px;
-  background: var(--green);
-  color: white;
-  font-size: 13px;
-  font-weight: 800;
-}
-.shop-btn:hover { background: #104d39; }
-.disclosure {
-  font-size: 12px;
-  color: var(--muted);
-  line-height: 1.7;
-  background: white;
-  padding: 18px;
-  border-radius: 12px;
-}
-footer {
-  background: var(--ink);
-  color: white;
-  padding: 35px 6%;
-  margin-top: 55px;
-}
-.footer-inner {
-  max-width: 1250px;
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-  gap: 25px;
-  flex-wrap: wrap;
-}
-footer p { color: #c5d0c9; font-size: 13px; line-height: 1.7; }
-footer a { color: var(--lime); }
-@media (max-width: 1000px) {
-  .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-}
-@media (max-width: 700px) {
-  header { padding: 16px 5%; }
-  nav { gap: 12px; }
-  nav a { font-size: 12px; }
-  .hero { padding: 35px 7%; }
-  .hero-art { font-size: 75px; min-width: 65px; }
-  .section-heading { align-items: start; flex-direction: column; }
-  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-  .product-visual { height: 145px; font-size: 53px; }
-  .card-content { padding: 12px; }
-  .card h3 { font-size: 15px; }
-  .card p { font-size: 12px; }
-}
-@media (max-width: 380px) {
-  .grid { grid-template-columns: 1fr; }
-  .hero-art { display: none; }
+@media(max-width:430px){
+ .wrap{width:92%}
+ .grid,.products{grid-template-columns:1fr}
+ .hero-art{display:none}
+ .art{height:190px}
+ .card h3{font-size:19px}
 }
 </style>
 </head>
-
 <body>
+
 <header>
-  <a class="logo" href="#">Zino<span>Mart.</span></a>
-  <nav>
-    <a href="#products">Shop</a>
-    <a href="#categories">Categories</a>
-    <a href="#about">About</a>
+ <div class="nav">
+  <a href="#home" class="logo">Zino<span>Mart.</span></a>
+  <button class="menu-btn" id="menuBtn" aria-expanded="false">☰ Menu</button>
+  <nav id="nav">
+   <a href="#home">Home</a>
+   <a href="#shop">Shop</a>
+   <a href="#blog">Buying Guides</a>
+   <a href="#about">About</a>
+   <a href="#contact">Contact</a>
   </nav>
+ </div>
 </header>
 
 <main>
-<section class="hero">
-  <div class="hero-content">
-    <div class="eyebrow">Welcome to ZinoMart</div>
-    <h1>Little finds.<br>Big difference.</h1>
-    <p>Explore handy home essentials, beauty favourites, travel organisers and everyday products worth discovering.</p>
-    <a class="hero-btn" href="#products">Explore the collection ↗</a>
+<!-- HOME -->
+<section class="page active" id="home">
+ <div class="wrap hero">
+  <div class="hero-copy">
+   <div class="eyebrow">Welcome to ZinoMart</div>
+   <h1>Smarter finds.<br>Better choices.</h1>
+   <p>Discover practical products, thoughtful recommendations and
+   easy-to-follow buying guides for everyday life.</p>
+   <a class="btn" href="#shop">Explore products ↗</a>
+   <a class="btn light" href="#blog">Read our guides</a>
   </div>
   <div class="hero-art" aria-hidden="true">✦<br>🛍️</div>
+ </div>
+
+ <div class="wrap section">
+  <div class="heading">
+   <div><h2>Shop by category</h2>
+   <p class="muted">Explore useful finds for different parts of your life.</p></div>
+  </div>
+  <div class="grid">
+   <a class="card" href="#shop" onclick="setCategory('pets')"><div class="article-icon">🐾</div><div class="card-body"><h3>Pet Essentials</h3><p>Enrichment, play and pet care.</p><span class="read-link">Explore →</span></div></a>
+   <a class="card" href="#shop" onclick="setCategory('beauty')"><div class="article-icon">✨</div><div class="card-body"><h3>Beauty & Hair</h3><p>Skincare and everyday styling tools.</p><span class="read-link">Explore →</span></div></a>
+   <a class="card" href="#shop" onclick="setCategory('home')"><div class="article-icon">🏡</div><div class="card-body"><h3>Home & Travel</h3><p>Organising, cleaning and home comfort.</p><span class="read-link">Explore →</span></div></a>
+  </div>
+ </div>
+
+ <div class="wrap section">
+  <div class="heading">
+   <div><h2>Featured finds</h2><p class="muted">Browse our current product selection.</p></div>
+   <a class="read-link" href="#shop">View all products →</a>
+  </div>
+  <div class="grid products" id="featured"></div>
+ </div>
+
+ <div class="wrap section">
+  <div class="heading">
+   <div><h2>Learn before you buy</h2><p class="muted">Practical guides to help you choose with confidence.</p></div>
+   <a class="read-link" href="#blog">All guides →</a>
+  </div>
+  <div class="grid" id="featuredGuides"></div>
+ </div>
 </section>
 
-<section class="section" id="products">
-  <div class="section-heading">
-    <div>
-      <h2>Discover our picks</h2>
-      <p>Explore products selected for everyday life.</p>
-    </div>
+<!-- SHOP -->
+<section class="page" id="shop">
+ <div class="wrap section">
+  <div class="heading"><div><h1>Shop our finds</h1>
+  <p class="muted">Product details and links to check current offers.</p></div></div>
+  <div class="filters" id="filters">
+   <button class="filter active" data-cat="all">All products</button>
+   <button class="filter" data-cat="pets">Pets</button>
+   <button class="filter" data-cat="fashion">Fashion</button>
+   <button class="filter" data-cat="kitchen">Kitchen</button>
+   <button class="filter" data-cat="beauty">Beauty</button>
+   <button class="filter" data-cat="travel">Travel</button>
+   <button class="filter" data-cat="home">Home</button>
+   <button class="filter" data-cat="electronics">Electronics</button>
+   <button class="filter" data-cat="cleaning">Cleaning</button>
   </div>
-
-  <div class="filters" id="categories">
-    <button class="filter active" data-category="all">All products</button>
-    <button class="filter" data-category="pets">Pets</button>
-    <button class="filter" data-category="fashion">Fashion</button>
-    <button class="filter" data-category="kitchen">Kitchen</button>
-    <button class="filter" data-category="beauty">Beauty</button>
-    <button class="filter" data-category="travel">Travel</button>
-    <button class="filter" data-category="home">Home</button>
-    <button class="filter" data-category="electronics">Electronics</button>
-    <button class="filter" data-category="cleaning">Cleaning</button>
-  </div>
-
-  <div class="grid" id="product-grid">
-
-    <article class="card" data-category="pets">
-      <div class="product-visual">
-        <span class="tag">PET PICK</span> 🐶
-      </div>
-      <div class="card-content">
-        <span class="category">Pets</span>
-        <h3>Interactive Pet Puzzle Feeder</h3>
-        <p>A food-dispensing enrichment toy designed to make mealtime more engaging for pets.</p>
-        <a class="shop-btn" href="https://www.amazon.com/dp/B09XXPCB4T?tag=zinomart06-20" target="_blank" rel="nofollow sponsored noopener">View on Amazon ↗</a>
-      </div>
-    </article>
-
-    <article class="card" data-category="fashion">
-      <div class="product-visual">
-        <span class="tag">STYLE PICK</span> 🧢
-      </div>
-      <div class="card-content">
-        <span class="category">Fashion</span>
-        <h3>OLIKER Knit Slouchy Beanie</h3>
-        <p>A casual knitted beanie for adding a cosy touch to your everyday outfits.</p>
-        <a class="shop-btn" href="https://www.amazon.com/dp/B0F6SZV18X?tag=zinomart06-20" target="_blank" rel="nofollow sponsored noopener">View on Amazon ↗</a>
-      </div>
-    </article>
-
-    <article class="card" data-category="kitchen">
-      <div class="product-visual">
-        <span class="tag">KITCHEN PICK</span> 🥤
-      </div>
-      <div class="card-content">
-        <span class="category">Kitchen</span>
-        <h3>Ninja Professional Plus Blender</h3>
-        <p>A high-capacity blender designed for smoothies, frozen drinks and food preparation.</p>
-        <a class="shop-btn" href="https://www.amazon.com/dp/B0855B5Z6F?tag=zinomart06-20" target="_blank" rel="nofollow sponsored noopener">View on Amazon ↗</a>
-      </div>
-    </article>
-
-    <article class="card" data-category="beauty">
-      <div class="product-visual">
-        <span class="tag">BEAUTY PICK</span> ✨
-      </div>
-      <div class="card-content">
-        <span class="category">Beauty</span>
-        <h3>Biodance Bio-Collagen Face Masks</h3>
-        <p>A skincare mask product made for a hydrating, at-home skincare routine.</p>
-        <a class="shop-btn" href="https://www.amazon.com/dp/B0B2RM68G2?tag=zinomart06-20" target="_blank" rel="nofollow sponsored noopener">View on Amazon ↗</a>
-      </div>
-    </article>
-
-    <article class="card" data-category="travel">
-      <div class="product-visual">
-        <span class="tag">TRAVEL PICK</span> 🧳
-      </div>
-      <div class="card-content">
-        <span class="category">Travel</span>
-        <h3>BAGAIL Compression Packing Cubes</h3>
-        <p>Organisers designed to help separate clothes and make packing easier.</p>
-        <a class="shop-btn" href="https://www.amazon.com/dp/B08S35399Y?tag=zinomart06-20" target="_blank" rel="nofollow sponsored noopener">View on Amazon ↗</a>
-      </div>
-    </article>
-
-    <article class="card" data-category="beauty">
-      <div class="product-visual">
-        <span class="tag">BEAUTY PICK</span> 💇
-      </div>
-      <div class="card-content">
-        <span class="category">Beauty</span>
-        <h3>Revlon One-Step Volumizer</h3>
-        <p>A hot-air styling brush designed to combine drying and styling in one tool.</p>
-        <a class="shop-btn" href="https://www.amazon.com/dp/B01LSUQSB0?tag=zinomart06-20" target="_blank" rel="nofollow sponsored noopener">View on Amazon ↗</a>
-      </div>
-    </article>
-
-    <article class="card" data-category="home">
-      <div class="product-visual">
-        <span class="tag">HOME PICK</span> 💧
-      </div>
-      <div class="card-content">
-        <span class="category">Home</span>
-        <h3>Levoit Cool Mist Humidifier</h3>
-        <p>A home humidifier option for adding moisture to indoor air. Check the exact model details before buying.</p>
-        <a class="shop-btn" href="https://www.amazon.com/dp/B0H41G86YL?tag=zinomart06-20" target="_blank" rel="nofollow sponsored noopener">View on Amazon ↗</a>
-      </div>
-    </article>
-
-    <article class="card" data-category="electronics">
-      <div class="product-visual">
-        <span class="tag">TECH PICK</span> 📺
-      </div>
-      <div class="card-content">
-        <span class="category">Electronics</span>
-        <h3>Roku Replacement Remote</h3>
-        <p>A replacement remote option for compatible Roku devices. Verify compatibility with your model.</p>
-        <a class="shop-btn" href="https://www.amazon.com/dp/B0BQS9Y69G?tag=zinomart06-20" target="_blank" rel="nofollow sponsored noopener">View on Amazon ↗</a>
-      </div>
-    </article>
-
-    <article class="card" data-category="cleaning">
-      <div class="product-visual">
-        <span class="tag">CLEANING PICK</span> 🧼
-      </div>
-      <div class="card-content">
-        <span class="category">Cleaning</span>
-        <h3>BISSELL Little Green Cleaner</h3>
-        <p>A portable upholstery-cleaning machine for suitable fabric surfaces and small cleaning jobs.</p>
-        <a class="shop-btn" href="https://www.amazon.com/dp/B0DJMP6T3N?tag=zinomart06-20" target="_blank" rel="nofollow sponsored noopener">View on Amazon ↗</a>
-      </div>
-    </article>
-
-  </div>
+  <div class="grid products" id="productGrid"></div>
+  <p class="muted small">Prices, availability, specifications and compatibility can change.
+  Always confirm details on the retailer's page.</p>
+ </div>
 </section>
 
-<section class="section" id="about">
-  <div class="section-heading">
-    <div>
-      <h2>Shopping made simple.</h2>
-      <p>Find a product you like, check the details, and shop through Amazon.</p>
-    </div>
-  </div>
-  <div class="disclosure">
-    <strong>Affiliate disclosure:</strong> ZinoMart participates in the Amazon Associates Program. As an Amazon Associate, we earn from qualifying purchases. Product availability, prices and details may change. Please confirm the current information on Amazon before purchasing.
-  </div>
+<!-- BLOG -->
+<section class="page" id="blog">
+ <div class="wrap section">
+  <div class="heading"><div><h1>Buying guides & blog</h1>
+  <p class="muted">Original introductory guides to help you make informed shopping decisions.</p></div></div>
+  <div class="notice">Our guides are educational starting points. Product availability and features
+  can change, so verify current information before buying.</div>
+  <div class="grid" id="blogGrid"></div>
+ </div>
 </section>
+
+<!-- ARTICLE -->
+<section class="page" id="articlePage">
+ <div class="wrap section">
+  <a class="read-link" href="#blog">← Back to all guides</a>
+  <article class="prose" id="articleContent"></article>
+ </div>
+</section>
+
+<!-- ABOUT -->
+<section class="page" id="about">
+ <div class="wrap section prose">
+  <div class="eyebrow">Our story</div>
+  <h1>About ZinoMart</h1>
+  <p>ZinoMart is a product discovery and shopping-guide website built to help
+  readers explore useful products for everyday life.</p>
+  <h2>What we do</h2>
+  <p>We organise product recommendations and publish practical introductory
+  guides about features to consider, questions to ask and ways to compare
+  options before making a purchase.</p>
+  <h2>How we approach recommendations</h2>
+  <p>Our aim is to make shopping research easier. Product descriptions are
+  informational, and readers should check current specifications, customer
+  reviews, compatibility, return terms and pricing with the retailer.</p>
+  <h2>Affiliate relationship</h2>
+  <p>Some links on this website are affiliate links. If you buy through them,
+  ZinoMart may earn a commission from qualifying purchases, at no additional
+  cost to you. Affiliate relationships do not replace the need to research
+  whether a product suits your needs.</p>
+  <p>Questions or corrections? Visit our <a href="#contact">Contact page</a>.</p>
+ </div>
+</section>
+
+<!-- CONTACT -->
+<section class="page" id="contact">
+ <div class="wrap section prose">
+  <h1>Contact ZinoMart</h1>
+  <p>Have a question about a guide, spotted an error, or want to share feedback?
+  You can prepare a message below.</p>
+  <div class="notice">Before publishing, replace the example contact address in this
+  page's code with an email address you control. The form will then open the
+  visitor's email app; it does not send messages directly from this website.</div>
+  <form id="contactForm">
+   <label class="field">Your name<input name="name" required maxlength="100" placeholder="Enter your name"></label>
+   <label class="field">Your email<input name="email" type="email" required maxlength="150" placeholder="you@example.com"></label>
+   <label class="field">Subject<input name="subject" required maxlength="150" placeholder="What is your message about?"></label>
+   <label class="field">Message<textarea name="message" required maxlength="4000" placeholder="Write your message here..."></textarea></label>
+   <button class="btn green" type="submit">Prepare email ↗</button>
+  </form>
+ </div>
+</section>
+
+<!-- PRIVACY -->
+<section class="page" id="privacy">
+ <div class="wrap section prose">
+  <h1>Privacy Policy</h1>
+  <p><strong>Last updated: October 12, 2026</strong></p>
+  <p>This policy describes how ZinoMart handles information when you visit this
+  website. Review and adapt it to reflect the services and technologies you
+  actually use before relying on it as your final policy.</p>
+  <h2>Information you provide</h2>
+  <p>If you contact us by email, we may receive the information you include,
+  such as your name, email address and message. This single-file website does
+  not itself store contact-form submissions in a database.</p>
+  <h2>Cookies and third-party websites</h2>
+  <p>Retailers and other third-party services may use cookies, tracking
+  technologies or similar tools according to their own policies. When you
+  follow an affiliate link, the destination website may record information
+  about your visit or purchase.</p>
+  <h2>Amazon Associates</h2>
+  <p>Amazon and its associated services may use technologies to attribute
+  qualifying purchases to affiliate links. Their collection and processing
+  practices are governed by their own privacy notices and terms.</p>
+  <h2>Data security and retention</h2>
+  <p>Do not submit confidential or sensitive information through this website.
+  Messages sent by email are handled by the relevant email provider. Retention
+  and deletion depend on the systems used to receive and manage messages.</p>
+  <h2>Your choices and rights</h2>
+  <p>Your privacy rights depend on your location and applicable law. You may
+  choose not to follow affiliate links or provide information through contact
+  channels. If you contact us with a privacy request, we will review it
+  according to applicable requirements.</p>
+  <h2>Policy updates and contact</h2>
+  <p>We may update this policy as the site changes. Please review this page
+  periodically. For privacy questions, use our <a href="#contact">Contact page</a>.</p>
+  <p><strong>Site owner note:</strong> This is a starter policy, not legal advice.
+  Update it to accurately describe all analytics, cookies, embeds, hosting,
+  contact methods and applicable legal requirements used by your site.</p>
+ </div>
+</section>
+
+<!-- TERMS -->
+<section class="page" id="terms">
+ <div class="wrap section prose">
+  <h1>Terms of Use</h1>
+  <p><strong>Last updated: October 12, 2026</strong></p>
+  <p>By using ZinoMart, you agree to use the website lawfully and responsibly.
+  If you do not agree, please discontinue use of the website.</p>
+  <h2>Informational content</h2>
+  <p>Our articles and product descriptions are provided for general information.
+  They are not guarantees of product performance, suitability, quality or
+  availability. Check details with the retailer and manufacturer before buying.</p>
+  <h2>Third-party links</h2>
+  <p>Our website links to third-party retailers and websites. Those services
+  operate under their own terms, privacy policies, prices and return policies.
+  ZinoMart does not process orders, payments, shipping or refunds for purchases
+  made on external retailer websites.</p>
+  <h2>Intellectual property</h2>
+  <p>Website text and design should not be copied or republished without
+  permission where permission is required. Product names and trademarks belong
+  to their respective owners.</p>
+  <h2>Acceptable use</h2>
+  <p>Do not misuse this website, interfere with its operation, or use it for
+  unlawful activity. Nothing in these terms removes rights that cannot
+  lawfully be excluded.</p>
+  <h2>Changes</h2>
+  <p>We may update these terms as the website develops. The updated version
+  will be posted on this page.</p>
+  <h2>Contact</h2>
+  <p>For questions about these terms, visit our <a href="#contact">Contact page</a>.</p>
+  <p><strong>Site owner note:</strong> Review these starter terms for your
+  jurisdiction and actual business arrangements before publication.</p>
+ </div>
+</section>
+
+<!-- AFFILIATE DISCLOSURE -->
+<section class="page" id="disclosure">
+ <div class="wrap section prose">
+  <h1>Affiliate Disclosure</h1>
+  <p><strong>Last updated: October 12, 2026</strong></p>
+  <h2>Our Amazon Associates relationship</h2>
+  <p>ZinoMart participates in the Amazon Services LLC Associates Program,
+  an affiliate advertising program designed to provide a means for websites
+  to earn advertising fees by advertising and linking to Amazon.com.</p>
+  <p>As an Amazon Associate, ZinoMart earns from qualifying purchases.</p>
+  <h2>What this means for you</h2>
+  <p>When you click an affiliate link and make an eligible purchase, we may
+  receive a commission. This does not add an affiliate fee to your purchase.
+  Prices and availability may change, and the retailer's displayed information
+  controls the transaction.</p>
+  <h2>Our recommendations</h2>
+  <p>Affiliate links help support this website. Readers should evaluate
+  product specifications, suitability, current reviews, return policies and
+  prices independently before buying.</p>
+  <p>We aim to identify affiliate links clearly and place disclosures where
+  readers can see them before or near the relevant recommendations.</p>
+ </div>
+</section>
+
 </main>
 
 <footer>
-  <div class="footer-inner">
-    <div>
-      <div class="logo">Zino<span>Mart.</span></div>
-      <p>Discover useful finds for everyday living.</p>
-    </div>
-    <div>
-      <strong>Explore</strong>
-      <p><a href="#products">Our products</a></p>
-      <p><a href="#categories">Shop categories</a></p>
-      <p><a href="#about">Affiliate disclosure</a></p>
-    </div>
+ <div class="footer-grid">
+  <div>
+   <a href="#home" class="logo">Zino<span>Mart.</span></a>
+   <p>Useful finds, product discovery and practical buying guides for everyday life.</p>
+   <p>Some links are affiliate links. We may earn from qualifying purchases.</p>
   </div>
-  <p style="text-align:center;margin-top:28px">
-    © <span id="year"></span> ZinoMart. All rights reserved.
-  </p>
+  <div><h3>Explore</h3><div class="footer-links">
+   <a href="#shop">Shop products</a>
+   <a href="#blog">Buying guides</a>
+   <a href="#about">About us</a>
+   <a href="#contact">Contact</a>
+  </div></div>
+  <div><h3>Information</h3><div class="footer-links">
+   <a href="#privacy">Privacy policy</a>
+   <a href="#terms">Terms of use</a>
+   <a href="#disclosure">Affiliate disclosure</a>
+  </div></div>
+ </div>
+ <div class="copyright">© <span id="year"></span> ZinoMart. All rights reserved.</div>
 </footer>
 
 <script>
-const filters = document.querySelectorAll(".filter");
-const cards = document.querySelectorAll(".card");
+"use strict";
 
-filters.forEach(button => {
-  button.addEventListener("click", () => {
-    filters.forEach(item => item.classList.remove("active"));
-    button.classList.add("active");
+/*
+  ZINOMART STORE 2
+  GitHub repository: zinomart-store2
+  Amazon Associates tracking ID: zinomart06-20
 
-    const category = button.dataset.category;
+  The contact form below opens the visitor's email application.
+  Replace CONTACT_EMAIL with an email address you control.
+*/
 
-    cards.forEach(card => {
-      card.hidden =
-        category !== "all" &&
-        card.dataset.category !== category;
-    });
-  });
+const AMAZON_TAG = "zinomart06-20";
+const CONTACT_EMAIL = "REPLACE-WITH-YOUR-EMAIL@example.com";
+
+const products = [
+ {
+  id:"pet-puzzle",name:"Interactive Pet Puzzle Feeder",
+  category:"pets",icon:"🐶",label:"PET PICK",asin:"B09XXPCB4T",
+  description:"A food-dispensing enrichment toy intended to make mealtime more engaging for pets.",
+  guide:"pet-toys"
+ },
+ {
+  id:"beanie",name:"OLIKER Knit Slouchy Beanie",
+  category:"fashion",icon:"🧢",label:"STYLE PICK",asin:"B0F6SZV18X",
+  description:"A casual knitted beanie for a cosy addition to everyday outfits.",
+  guide:"choosing-accessories"
+ },
+ {
+  id:"ninja-blender",name:"Ninja Professional Plus Blender",
+  category:"kitchen",icon:"🥤",label:"KITCHEN PICK",asin:"B0855B5Z6F",
+  description:"A high-capacity blender designed for smoothies, frozen drinks and food preparation.",
+  guide:"kitchen-appliances"
+ },
+ {
+  id:"biodance-mask",name:"Biodance Bio-Collagen Face Masks",
+  category:"beauty",icon:"✨",label:"BEAUTY PICK",asin:"B0B2RM68G2",
+  description:"A skincare mask for a hydrating at-home routine. Check ingredients and product directions.",
+  guide:"skincare-products"
+ },
+ {
+  id:"packing-cubes",name:"BAGAIL Compression Packing Cubes",
+  category:"travel",icon:"🧳",label:"TRAVEL PICK",asin:"B08S35399Y",
+  description:"Travel organisers designed to separate clothes and help organise luggage.",
+  guide:"packing-organisers"
+ },
+ {
+  id:"revlon-brush",name:"Revlon One-Step Volumizer",
+  category:"beauty",icon:"💇",label:"BEAUTY PICK",asin:"B01LSUQSB0",
+  description:"A hot-air styling brush designed to combine drying and styling in one tool.",
+  guide:"hair-styling"
+ },
+ {
+  id:"levoit-humidifier",name:"Levoit Cool Mist Humidifier",
+  category:"home",icon:"💧",label:"HOME PICK",asin:"B0H41G86YL",
+  description:"A humidifier option for adding moisture to indoor air. Confirm the exact model and features.",
+  guide:"home-comfort"
+ },
+ {
+  id:"roku-remote",name:"Roku Replacement Remote",
+  category:"electronics",icon:"📺",label:"TECH PICK",asin:"B0BQS9Y69G",
+  description:"A replacement remote option. Check compatibility with your exact Roku device.",
+  guide:"replacement-electronics"
+ },
+ {
+  id:"bissell-cleaner",name:"BISSELL Portable Upholstery Cleaner",
+  category:"cleaning",icon:"🧼",label:"CLEANING PICK",asin:"B0DJMP6T3N",
+  description:"A portable upholstery-cleaning machine for suitable fabric surfaces and small cleaning jobs.",
+  guide:"cleaning-tools"
+ }
+];
+
+const guides = [
+ {
+  id:"buying-basics",title:"How to Compare Products Before Buying",
+  icon:"🔎",category:"Shopping basics",
+  intro:"A practical checklist for researching products and avoiding rushed decisions.",
+  sections:[
+   ["Start with your actual need","Write down the problem you want the product to solve. Decide which features matter most and which are optional. This keeps marketing claims from distracting you."],
+   ["Compare specifications","Compare relevant dimensions, capacity, materials, power requirements, compatibility and included accessories. Compare like with like rather than relying on a headline or product name."],
+   ["Read reviews carefully","Look for detailed reviews that explain how a product was used. Repeated complaints about the same issue may be more informative than a single very positive or negative comment."],
+   ["Check the seller and return terms","Review the seller, delivery information, warranty, return window and any conditions that apply. A lower price is not necessarily the best overall choice."],
+   ["Check the final cost","Review the current price, shipping, taxes and any other charges displayed at checkout. Keep your budget in mind."],
+   ["Make a considered choice","Use the information you gathered to decide whether the product meets your needs. You do not need to buy immediately if important questions remain unanswered."]
+  ]
+ },
+ {
+  id:"pet-toys",title:"How to Choose an Interactive Pet Toy",
+  icon:"🐾",category:"Pets",
+  intro:"Consider enrichment, safety, cleaning and suitability when comparing toys and puzzle feeders.",
+  sections:[
+   ["Consider your pet","Think about the animal's size, age, experience and usual play behaviour. A product suitable for one pet may not be suitable for another."],
+   ["Look at the material","Check the manufacturer's material information and any care instructions. Avoid toys that are damaged or have loose parts that your pet could swallow."],
+   ["Match the difficulty","Puzzle toys vary in complexity. Choose one your pet can explore without becoming persistently frustrated, and introduce it gradually."],
+   ["Check cleaning requirements","Food-dispensing products need regular cleaning. Check whether parts can be removed and how the manufacturer recommends washing them."],
+   ["Supervise initial use","Watch your pet when introducing a new toy. Stop use if the toy breaks, becomes unsafe or is unsuitable for your pet."],
+   ["Compare before buying","Check dimensions, intended animal, included components and replacement-part availability. Ask a veterinarian if you have specific safety concerns."]
+  ]
+ },
+ {
+  id:"skincare-products",title:"What to Check Before Buying Face Masks",
+  icon:"✨",category:"Beauty",
+  intro:"A straightforward guide to ingredients, skin compatibility and product directions.",
+  sections:[
+   ["Read the full ingredient list","Do not choose a skincare product based on its headline ingredients alone. Review the complete ingredient list and check for ingredients you know you need to avoid."],
+   ["Consider your skin's needs","Think about whether your goal is hydration, cleansing or another cosmetic concern. No single mask is right for everyone."],
+   ["Understand the directions","Follow the manufacturer's instructions for application, wear time and removal. Leaving a product on longer than directed is not necessarily beneficial."],
+   ["Be cautious with sensitive skin","If you have a history of reactions, review the ingredients carefully and consider advice from a qualified healthcare professional."],
+   ["Avoid exaggerated claims","Marketing language does not guarantee a particular result. Be cautious of claims that promise dramatic or permanent changes."],
+   ["Compare the real value","Consider the number of uses, price per mask, storage instructions, expiry information and seller details."]
+  ]
+ },
+ {
+  id:"hair-styling",title:"How to Compare Hot-Air Hair Styling Tools",
+  icon:"💇",category:"Beauty",
+  intro:"Features to check when researching hot-air brushes and other styling tools.",
+  sections:[
+   ["Check the tool's purpose","Hot-air brushes can differ in whether they focus on drying, shaping, smoothing or adding volume. Read the exact product description."],
+   ["Review heat settings","Look for available temperature and airflow settings. Different hair types and styling goals can require different approaches."],
+   ["Understand the attachments","Check what is included, how attachments connect and whether replacement parts are available."],
+   ["Check electrical compatibility","Confirm the voltage, plug type and power requirements for your country. Never assume a device supports a different voltage."],
+   ["Read care and safety instructions","Review cleaning directions and manufacturer safety guidance. Keep electrical tools away from water and use them only as directed."],
+   ["Compare total value","Compare warranty terms, seller information, features and replacement-part costs rather than choosing by appearance alone."]
+  ]
+ },
+ {
+  id:"packing-organisers",title:"How to Choose Travel Packing Organisers",
+  icon:"🧳",category:"Travel",
+  intro:"A guide to comparing packing cubes, organisers and luggage accessories.",
+  sections:[
+   ["Choose the right sizes","Think about the luggage you already own and the clothes you usually pack. Measure your suitcase and compare it with the organiser dimensions."],
+   ["Check materials and seams","Look at the listed material, stitching, zippers and care instructions. Product photos alone cannot establish durability."],
+   ["Understand compression","Some packing cubes compress clothing; others simply separate items. Check how the specific design works and what is included."],
+   ["Plan your organisation","Consider whether you want separate organisers for clothing, accessories, laundry or toiletries. A large set is not always necessary."],
+   ["Consider weight and cleaning","Check the product's weight, washing instructions and whether it can dry thoroughly between trips."],
+   ["Compare the set contents","Review the number and sizes of bags, the seller's return terms and the total price before deciding."]
+  ]
+ },
+ {
+  id:"kitchen-appliances",title:"What to Compare When Buying a Blender",
+  icon:"🥤",category:"Kitchen",
+  intro:"Capacity, controls, cleaning and safety all matter when choosing a blender.",
+  sections:[
+   ["Think about what you will blend","Smoothies, ice, sauces and other recipes may place different demands on a blender. Check the manufacturer's approved uses."],
+   ["Compare capacity","Consider how many servings you normally prepare and whether the listed capacity suits your kitchen."],
+   ["Look beyond the motor rating","Blade design, container shape, controls and manufacturer instructions also affect how an appliance performs."],
+   ["Check cleaning requirements","See whether the container and components are dishwasher-safe or require handwashing. Follow the manufacturer's cleaning directions."],
+   ["Consider storage and noise","Measure your counter or storage space and consider the appliance's size and expected operating noise."],
+   ["Review safety and warranty","Check the lid, locking instructions, warranty, replacement parts and seller information. Never handle moving blades while connected to power."]
+  ]
+ },
+ {
+  id:"home-comfort",title:"How to Compare Home Humidifiers",
+  icon:"💧",category:"Home",
+  intro:"Compare room suitability, maintenance, noise and operating requirements before buying.",
+  sections:[
+   ["Check the intended room","Compare the manufacturer's recommended room size with the room where you intend to use the unit."],
+   ["Understand the type","Different humidifier types work differently. Review the product's operating method, instructions and any relevant maintenance requirements."],
+   ["Look at cleaning needs","Water reservoirs need appropriate regular cleaning. Check how easy the unit is to open, clean and dry."],
+   ["Compare noise and controls","If the unit will be used in a bedroom, check published noise information, timer options and adjustable settings where available."],
+   ["Follow water instructions","Use the type of water recommended by the manufacturer. Keep humidity at a sensible level and avoid allowing dampness to build up indoors."],
+   ["Review ongoing costs","Consider filters, replacement components, electricity use and warranty coverage in addition to the initial price."]
+  ]
+ },
+ {
+  id:"replacement-electronics",title:"How to Find the Right Replacement Remote",
+  icon:"📺",category:"Electronics",
+  intro:"Avoid compatibility problems by identifying your device before ordering a replacement.",
+  sections:[
+   ["Identify the exact device","Find your device's model name or model number in its settings, packaging or manufacturer documentation."],
+   ["Read the compatibility list","Do not assume every remote from the same brand works with every device. Check the seller's explicit compatibility information."],
+   ["Check the connection type","Some remotes use infrared, Bluetooth or another connection method. Confirm what your device requires."],
+   ["Review included features","Compare voice controls, shortcut buttons, pairing instructions and other functions if they matter to you."],
+   ["Check power requirements","Review whether batteries are included, which type is needed and whether the remote is rechargeable."],
+   ["Understand returns","If compatibility is uncertain, check the return policy before buying and contact the seller or manufacturer for clarification."]
+  ]
+ },
+ {
+  id:"cleaning-tools",title:"How to Choose a Portable Upholstery Cleaner",
+  icon:"🧼",category:"Cleaning",
+  intro:"Compare cleaning purpose, tank capacity, maintenance and fabric compatibility.",
+  sections:[
+   ["Choose the right cleaning job","Portable cleaners may suit some upholstery and spot-cleaning tasks. Check the manufacturer's intended uses and limitations."],
+   ["Check surface compatibility","Read instructions for your fabric, carpet or upholstery. Test an inconspicuous area when the manufacturer recommends it."],
+   ["Compare tanks and reach","Consider clean-water and dirty-water capacity, hose length, weight and how far you need to carry the machine."],
+   ["Review the cleaning solution","Check which solutions the manufacturer approves and whether the cost of consumables fits your budget."],
+   ["Consider maintenance","Look at how tanks, hoses, brushes and filters are cleaned and stored after use."],
+   ["Review warranty and storage","Check dimensions, accessories, replacement parts, warranty and return terms before making a decision."]
+  ]
+ },
+ {
+  id:"choosing-accessories",title:"How to Choose Everyday Fashion Accessories",
+  icon:"🧢",category:"Fashion",
+  intro:"Use sizing, material, comfort and care information to compare everyday accessories.",
+  sections:[
+   ["Start with the intended use","Consider the climate, activity and situations in which you plan to use the accessory."],
+   ["Read the materials","Material labels can help you understand texture, warmth, breathability and care requirements. Check the full listing."],
+   ["Check sizing and fit","For hats and beanies, look for measurements, stretch information and the manufacturer's size guidance."],
+   ["Consider care requirements","Review washing and drying instructions. Some knits may need gentle care to maintain their shape."],
+   ["Check colours and product options","Confirm the selected colour, style and size in the actual order, as listings may include several variations."],
+   ["Compare value and returns","Check the total price, seller reputation, return conditions and whether the product suits your intended use."]
+  ]
+ }
+];
+
+function amazonLink(asin){
+ return "https://www.amazon.com/dp/"+encodeURIComponent(asin)+
+ "?tag="+encodeURIComponent(AMAZON_TAG);
+}
+
+function productCard(p){
+ return `<article class="card">
+  <div class="art">
+   <span class="art-label">${p.label}</span>
+   <span aria-hidden="true">${p.icon}</span>
+  </div>
+  <div class="card-body">
+   <span class="category">${p.category}</span>
+   <h3>${p.name}</h3>
+   <p>${p.description}</p>
+   <a class="btn green" href="${amazonLink(p.asin)}"
+      target="_blank" rel="nofollow sponsored noopener"
+      aria-label="View ${p.name} on Amazon">Check on Amazon ↗</a>
+  </div>
+ </article>`;
+}
+
+function guideCard(g){
+ return `<article class="card">
+  <div class="article-icon" aria-hidden="true">${g.icon}</div>
+  <div class="article-content">
+   <span class="category">${g.category}</span>
+   <h3>${g.title}</h3>
+   <p>${g.intro}</p>
+   <a class="read-link" href="#guide-${g.id}">Read guide →</a>
+  </div>
+ </article>`;
+}
+
+function renderProducts(category="all"){
+ const filtered=category==="all"?products:products.filter(p=>p.category===category);
+ document.getElementById("productGrid").innerHTML=filtered.length
+  ?filtered.map(productCard).join("")
+  :'<p class="empty">No products found in this category.</p>';
+}
+
+function renderGuides(){
+ document.getElementById("blogGrid").innerHTML=guides.map(guideCard).join("");
+ document.getElementById("featuredGuides").innerHTML=guides.slice(0,3).map(guideCard).join("");
+ document.getElementById("featured").innerHTML=products.slice(0,3).map(productCard).join("");
+}
+
+function setCategory(category){
+ document.querySelectorAll(".filter").forEach(b=>{
+  b.classList.toggle("active",b.dataset.cat===category);
+ });
+ renderProducts(category);
+}
+
+document.querySelectorAll(".filter").forEach(button=>{
+ button.addEventListener("click",()=>{
+  setCategory(button.dataset.cat);
+ });
 });
 
-document.getElementById("year").textContent =
-  new Date().getFullYear();
+function showGuide(id){
+ const guide=guides.find(g=>g.id===id);
+ if(!guide)return;
+ const content=document.getElementById("articleContent");
+ content.innerHTML=`
+  <div class="eyebrow">${guide.category}</div>
+  <h1>${guide.title}</h1>
+  <p>${guide.intro}</p>
+  <p class="muted small">A ZinoMart educational buying guide.</p>
+  ${guide.sections.map((s,i)=>`<section>
+    <h2>${i+1}. ${s[0]}</h2><p>${s[1]}</p>
+   </section>`).join("")}
+  <div class="notice"><strong>Before you buy:</strong> Compare current
+  specifications, seller information, prices, return terms and suitability.
+  Product information can change over time.</div>
+  <h2>Explore related products</h2>
+  <p>Browse our <a href="#shop">product collection</a> and check the
+  retailer's current listing before making a decision.</p>
+  <a class="btn green" href="#shop">Explore products ↗</a>`;
+ location.hash="guide-"+id;
+}
+
+function route(){
+ const hash=decodeURIComponent(location.hash.slice(1)||"home");
+ const guidePrefix="guide-";
+ document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+ if(hash.startsWith(guidePrefix)){
+  document.getElementById("articlePage").classList.add("active");
+  showGuide(hash.slice(guidePrefix.length));
+ }else{
+  const page=document.getElementById(hash);
+  if(page&&page.classList.contains("page")){
+   page.classList.add("active");
+  }else{
+   document.getElementById("home").classList.add("active");
+  }
+ }
+ document.getElementById("nav").classList.remove("open");
+ document.getElementById("menuBtn").setAttribute("aria-expanded","false");
+ window.scrollTo(0,0);
+}
+
+document.getElementById("menuBtn").addEventListener("click",()=>{
+ const nav=document.getElementById("nav");
+ nav.classList.toggle("open");
+ document.getElementById("menuBtn").setAttribute(
+  "aria-expanded",String(nav.classList.contains("open"))
+ );
+});
+
+document.getElementById("contactForm").addEventListener("submit",event=>{
+ event.preventDefault();
+ if(CONTACT_EMAIL.includes("REPLACE-WITH-YOUR-EMAIL")){
+  alert("Site owner: edit CONTACT_EMAIL in the code and replace it with your real contact email before using this form.");
+  return;
+ }
+ const data=new FormData(event.target);
+ const subject=encodeURIComponent(data.get("subject"));
+ const body=encodeURIComponent(
+  "Name: "+data.get("name")+"\n"+
+  "Reply email: "+data.get("email")+"\n\n"+
+  data.get("message")
+ );
+ location.href="mailto:"+CONTACT_EMAIL+"?subject="+subject+"&body="+body;
+});
+
+document.getElementById("year").textContent=new Date().getFullYear();
+
+renderProducts();
+renderGuides();
+window.addEventListener("hashchange",route);
+route();
 </script>
 </body>
 </html>
-
