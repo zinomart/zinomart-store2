@@ -1,1 +1,445 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Discover useful products for pets, beauty, travel, home and everyday living at ZinoMart.">
+<title>ZinoMart | Discover Your Next Favourite</title>
+
+<style>
+:root {
+  --ink: #17211e;
+  --green: #176b50;
+  --lime: #d6f36a;
+  --cream: #f7f7f0;
+  --white: #ffffff;
+  --muted: #68716c;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+}
+a { color: inherit; text-decoration: none; }
+header {
+  background: var(--white);
+  padding: 18px 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  border-bottom: 1px solid #e8e9e2;
+}
+.logo { font-size: 25px; font-weight: 900; letter-spacing: -1px; }
+.logo span { color: var(--green); }
+nav { display: flex; gap: 20px; flex-wrap: wrap; }
+nav a { font-size: 14px; font-weight: 700; }
+.hero {
+  margin: 24px auto;
+  width: 90%;
+  max-width: 1250px;
+  background: var(--ink);
+  color: white;
+  border-radius: 24px;
+  padding: 55px 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 25px;
+  overflow: hidden;
+}
+.hero-content { max-width: 650px; }
+.eyebrow {
+  color: var(--lime);
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+h1 {
+  font-size: clamp(36px, 6vw, 68px);
+  line-height: 1.04;
+  margin: 18px 0;
+  letter-spacing: -2px;
+}
+.hero p { color: #d3ddd7; line-height: 1.7; max-width: 480px; }
+.hero-art {
+  font-size: clamp(75px, 13vw, 150px);
+  min-width: 120px;
+  text-align: center;
+}
+.hero-btn {
+  display: inline-block;
+  background: var(--lime);
+  color: var(--ink);
+  padding: 14px 22px;
+  border-radius: 30px;
+  font-weight: 800;
+  margin-top: 12px;
+}
+.section {
+  width: 90%;
+  max-width: 1250px;
+  margin: 45px auto;
+}
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+.section-heading h2 { font-size: 30px; margin: 0 0 8px; }
+.section-heading p { color: var(--muted); margin: 0; }
+.filters { display: flex; flex-wrap: wrap; gap: 9px; margin: 20px 0; }
+.filter {
+  border: 1px solid #dce0d8;
+  background: white;
+  border-radius: 30px;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-weight: 700;
+}
+.filter.active, .filter:hover {
+  background: var(--green);
+  color: white;
+  border-color: var(--green);
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+.card {
+  background: white;
+  border: 1px solid #e8e9e2;
+  border-radius: 18px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform .2s, box-shadow .2s;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px #17211e12;
+}
+.product-visual {
+  height: 190px;
+  background: #edf1e6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 70px;
+  position: relative;
+}
+.product-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 14px;
+  background: white;
+}
+.tag {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: var(--lime);
+  color: var(--ink);
+  font-size: 10px;
+  font-weight: 900;
+  padding: 7px 9px;
+  border-radius: 20px;
+  z-index: 1;
+}
+.card-content {
+  padding: 17px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.category {
+  color: var(--green);
+  text-transform: uppercase;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+.card h3 { font-size: 17px; line-height: 1.4; margin: 9px 0; }
+.card p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+  margin: 0 0 18px;
+  flex: 1;
+}
+.shop-btn {
+  display: block;
+  text-align: center;
+  padding: 12px;
+  border-radius: 9px;
+  background: var(--green);
+  color: white;
+  font-size: 13px;
+  font-weight: 800;
+}
+.shop-btn:hover { background: #104d39; }
+.disclosure {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.7;
+  background: white;
+  padding: 18px;
+  border-radius: 12px;
+}
+footer {
+  background: var(--ink);
+  color: white;
+  padding: 35px 6%;
+  margin-top: 55px;
+}
+.footer-inner {
+  max-width: 1250px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+footer p { color: #c5d0c9; font-size: 13px; line-height: 1.7; }
+footer a { color: var(--lime); }
+@media (max-width: 1000px) {
+  .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 700px) {
+  header { padding: 16px 5%; }
+  nav { gap: 12px; }
+  nav a { font-size: 12px; }
+  .hero { padding: 35px 7%; }
+  .hero-art { font-size: 75px; min-width: 65px; }
+  .section-heading { align-items: start; flex-direction: column; }
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .product-visual { height: 145px; font-size: 53px; }
+  .card-content { padding: 12px; }
+  .card h3 { font-size: 15px; }
+  .card p { font-size: 12px; }
+}
+@media (max-width: 380px) {
+  .grid { grid-template-columns: 1fr; }
+  .hero-art { display: none; }
+}
+</style>
+</head>
+
+<body>
+<header>
+  <a class="logo" href="#">Zino<span>Mart.</span></a>
+  <nav>
+    <a href="#products">Shop</a>
+    <a href="#categories">Categories</a>
+    <a href="#about">About</a>
+  </nav>
+</header>
+
+<main>
+<section class="hero">
+  <div class="hero-content">
+    <div class="eyebrow">Welcome to ZinoMart</div>
+    <h1>Little finds.<br>Big difference.</h1>
+    <p>Explore handy home essentials, beauty favourites, travel organisers and everyday products worth discovering.</p>
+    <a class="hero-btn" href="#products">Explore the collection ↗</a>
+  </div>
+  <div class="hero-art" aria-hidden="true">✦<br>🛍️</div>
+</section>
+
+<section class="section" id="products">
+  <div class="section-heading">
+    <div>
+      <h2>Discover our picks</h2>
+      <p>Explore products selected for everyday life.</p>
+    </div>
+  </div>
+
+  <div class="filters" id="categories">
+    <button class="filter active" data-category="all">All products</button>
+    <button class="filter" data-category="pets">Pets</button>
+    <button class="filter" data-category="fashion">Fashion</button>
+    <button class="filter" data-category="kitchen">Kitchen</button>
+    <button class="filter" data-category="beauty">Beauty</button>
+    <button class="filter" data-category="travel">Travel</button>
+    <button class="filter" data-category="home">Home</button>
+    <button class="filter" data-category="electronics">Electronics</button>
+    <button class="filter" data-category="cleaning">Cleaning</button>
+  </div>
+
+  <div class="grid" id="product-grid">
+
+    <article class="card" data-category="pets">
+      <div class="product-visual">
+        <span class="tag">PET PICK</span> 🐶
+      </div>
+      <div class="card-content">
+        <span class="category">Pets</span>
+        <h3>Interactive Pet Puzzle Feeder</h3>
+        <p>A food-dispensing enrichment toy designed to make mealtime more engaging for pets.</p>
+        <a class="shop-btn" href="https://www.amazon.com/dp/B09XXPCB4T?tag=zinomart06-20" target="_blank" rel="nofollow sponsored noopener">View on Amazon ↗</a>
+      </div>
+    </article>
+
+    <article class="card" data-category="fashion">
+      <div class="product-visual">
+        <span class="tag">STYLE PICK</span> 🧢
+      </div>
+      <div class="card-content">
+        <span class="category">Fashion</span>
+        <h3>OLIKER Knit Slouchy Beanie</h3>
+        <p>A casual knitted beanie for adding a cosy touch to your everyday outfits.</p>
+        <a class="shop-btn" href="https://www.amazon.com/dp/B0F6SZV18X?tag=zinomart06-20" target="_blank" rel="nofollow sponsored noopener">View on Amazon ↗</a>
+      </div>
+    </article>
+
+    <article class="card" data-category="kitchen">
+      <div class="product-visual">
+        <span class="tag">KITCHEN PICK</span> 🥤
+      </div>
+      <div class="card-content">
+        <span class="category">Kitchen</span>
+        <h3>Ninja Professional Plus Blender</h3>
+        <p>A high-capacity blender designed for smoothies, frozen drinks and food preparation.</p>
+        <a class="shop-btn" href="https://www.amazon.com/dp/B0855B5Z6F?tag=zinomart06-20" target="_blank" rel="nofollow sponsored noopener">View on Amazon ↗</a>
+      </div>
+    </article>
+
+    <article class="card" data-category="beauty">
+      <div class="product-visual">
+        <span class="tag">BEAUTY PICK</span> ✨
+      </div>
+      <div class="card-content">
+        <span class="category">Beauty</span>
+        <h3>Biodance Bio-Collagen Face Masks</h3>
+        <p>A skincare mask product made for a hydrating, at-home skincare routine.</p>
+        <a class="shop-btn" href="https://www.amazon.com/dp/B0B2RM68G2?tag=zinomart06-20" target="_blank" rel="nofollow sponsored noopener">View on Amazon ↗</a>
+      </div>
+    </article>
+
+    <article class="card" data-category="travel">
+      <div class="product-visual">
+        <span class="tag">TRAVEL PICK</span> 🧳
+      </div>
+      <div class="card-content">
+        <span class="category">Travel</span>
+        <h3>BAGAIL Compression Packing Cubes</h3>
+        <p>Organisers designed to help separate clothes and make packing easier.</p>
+        <a class="shop-btn" href="https://www.amazon.com/dp/B08S35399Y?tag=zinomart06-20" target="_blank" rel="nofollow sponsored noopener">View on Amazon ↗</a>
+      </div>
+    </article>
+
+    <article class="card" data-category="beauty">
+      <div class="product-visual">
+        <span class="tag">BEAUTY PICK</span> 💇
+      </div>
+      <div class="card-content">
+        <span class="category">Beauty</span>
+        <h3>Revlon One-Step Volumizer</h3>
+        <p>A hot-air styling brush designed to combine drying and styling in one tool.</p>
+        <a class="shop-btn" href="https://www.amazon.com/dp/B01LSUQSB0?tag=zinomart06-20" target="_blank" rel="nofollow sponsored noopener">View on Amazon ↗</a>
+      </div>
+    </article>
+
+    <article class="card" data-category="home">
+      <div class="product-visual">
+        <span class="tag">HOME PICK</span> 💧
+      </div>
+      <div class="card-content">
+        <span class="category">Home</span>
+        <h3>Levoit Cool Mist Humidifier</h3>
+        <p>A home humidifier option for adding moisture to indoor air. Check the exact model details before buying.</p>
+        <a class="shop-btn" href="https://www.amazon.com/dp/B0H41G86YL?tag=zinomart06-20" target="_blank" rel="nofollow sponsored noopener">View on Amazon ↗</a>
+      </div>
+    </article>
+
+    <article class="card" data-category="electronics">
+      <div class="product-visual">
+        <span class="tag">TECH PICK</span> 📺
+      </div>
+      <div class="card-content">
+        <span class="category">Electronics</span>
+        <h3>Roku Replacement Remote</h3>
+        <p>A replacement remote option for compatible Roku devices. Verify compatibility with your model.</p>
+        <a class="shop-btn" href="https://www.amazon.com/dp/B0BQS9Y69G?tag=zinomart06-20" target="_blank" rel="nofollow sponsored noopener">View on Amazon ↗</a>
+      </div>
+    </article>
+
+    <article class="card" data-category="cleaning">
+      <div class="product-visual">
+        <span class="tag">CLEANING PICK</span> 🧼
+      </div>
+      <div class="card-content">
+        <span class="category">Cleaning</span>
+        <h3>BISSELL Little Green Cleaner</h3>
+        <p>A portable upholstery-cleaning machine for suitable fabric surfaces and small cleaning jobs.</p>
+        <a class="shop-btn" href="https://www.amazon.com/dp/B0DJMP6T3N?tag=zinomart06-20" target="_blank" rel="nofollow sponsored noopener">View on Amazon ↗</a>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="section-heading">
+    <div>
+      <h2>Shopping made simple.</h2>
+      <p>Find a product you like, check the details, and shop through Amazon.</p>
+    </div>
+  </div>
+  <div class="disclosure">
+    <strong>Affiliate disclosure:</strong> ZinoMart participates in the Amazon Associates Program. As an Amazon Associate, we earn from qualifying purchases. Product availability, prices and details may change. Please confirm the current information on Amazon before purchasing.
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="logo">Zino<span>Mart.</span></div>
+      <p>Discover useful finds for everyday living.</p>
+    </div>
+    <div>
+      <strong>Explore</strong>
+      <p><a href="#products">Our products</a></p>
+      <p><a href="#categories">Shop categories</a></p>
+      <p><a href="#about">Affiliate disclosure</a></p>
+    </div>
+  </div>
+  <p style="text-align:center;margin-top:28px">
+    © <span id="year"></span> ZinoMart. All rights reserved.
+  </p>
+</footer>
+
+<script>
+const filters = document.querySelectorAll(".filter");
+const cards = document.querySelectorAll(".card");
+
+filters.forEach(button => {
+  button.addEventListener("click", () => {
+    filters.forEach(item => item.classList.remove("active"));
+    button.classList.add("active");
+
+    const category = button.dataset.category;
+
+    cards.forEach(card => {
+      card.hidden =
+        category !== "all" &&
+        card.dataset.category !== category;
+    });
+  });
+});
+
+document.getElementById("year").textContent =
+  new Date().getFullYear();
+</script>
+</body>
+</html>
+
